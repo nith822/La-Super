@@ -1,0 +1,15 @@
+<products>
+	<product>
+		<names>corn, maiz</names>
+		<descriptions>yummy, sabrosa</descriptions>
+		<images>corn1.png, corn2.jpg</images>
+		<price>1.00</price>
+	</product>
+	
+	<product>
+		<names> chicken, pollo </names>
+		<descriptions> chicken, pollo </descriptions>
+		<images> chicken, pollo </images>
+		<price> 3.00 </price>
+	</product>
+</products>

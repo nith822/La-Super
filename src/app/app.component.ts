@@ -12,7 +12,7 @@ export class AppComponent {
 	public isMobile: Boolean;
 	
 	constructor(private responsiveService:ResponsiveService){
-	  
+		
 	}
 
 	ngOnInit(){

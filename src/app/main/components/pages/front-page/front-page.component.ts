@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ProductService } from '../../../product/product.service';
+	
 @Component({
   selector: 'front-page',
   templateUrl: './front-page.component.html',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productService: ProductService) { 
+  
+  }
 
   ngOnInit() {
   }
