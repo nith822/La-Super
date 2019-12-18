@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-import { ProductComponent } from '../product/product.component'; 
 
 @Component({
   selector: 'front-page',
