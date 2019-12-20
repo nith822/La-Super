@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FrontPageComponent } from './front-page.component';
+import { FrontPageModule } from './front-page.module';
 
 describe('FrontPageComponent', () => {
   let component: FrontPageComponent;
