@@ -33,6 +33,9 @@ export class Product {
 		this.updateLanguage(language);
 	}
 	
+	toString(): string {
+		return this.name + " :: " +this.description;
+	}
 	updateLanguage(language: number): void {
 		this.name = this.names[language];
 		this.description = this.descriptions[language];

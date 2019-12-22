@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 
+import { Product } from './product';
+
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,25 +16,43 @@ export class ProductService {
 		this.getProducts();
 	}
   
-	getProducts(): void {
+	getProducts(): Observable<Product[]> {
+		var products: Observable<Product[]>;
 		this.loadXML(this.primaryProductXML).subscribe(data => {
-			console.log(data);
 			var parser: DOMParser = new DOMParser();
 			
 			//https://www.javascripture.com/Document
 			var xmlDoc = parser.parseFromString(data, "text/xml");
-			console.log(xmlDoc.getElementsByTagName("product")[0]);
 			
 			//https://www.javascripture.com/HTMLCollection
 			var xmlNodes: HTMLCollectionOf<Element> = xmlDoc.getElementsByTagName("product");
 			
-			console.log(xmlNodes.item(0).childNodes);
-			//https://www.javascripture.com/NodeList
-			var nodeList: HTMLCollectionOf<Element> = xmlNodes.item(0).children;
-			for (var i = 0; i < nodeList.length; i++) {
-				console.log(nodeList.item(i).innerHTML);
+			for(var i = 0; i < xmlNodes.length; i++) {
+				//https://www.javascripture.com/NodeList
+				var nodeList: HTMLCollectionOf<Element> = xmlNodes.item(i).children;
+				var nodeChilds: string[] = [];
+				for (var j = 0; j < nodeList.length; j++) {
+					nodeChilds.push(nodeList.item(j).innerHTML);
+				}
+				//products.push(this.parseProduct(nodeChilds));
+				
 			}
 		});
+		return products;
+	}
+	
+	parseProduct(nodeChilds: string[]): Product {
+		if(nodeChilds.length < 4) {
+			throw new Error('Error with product parsing');
+		}
+		
+		var default_language = 0;
+		var names: string[] = nodeChilds[0].split(",");
+		var descriptions: string[]= nodeChilds[1].split(",");
+		var images: string[] = nodeChilds[2].split(",");
+		var price: number = parseFloat(nodeChilds[3]);
+		
+		return new Product(default_language, names, descriptions, images, price);
 	}
 	
 	loadXML(XMLFile: string): Observable<string> {

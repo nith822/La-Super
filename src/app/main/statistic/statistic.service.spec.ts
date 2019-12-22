@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StatisticsService } from './statistics.service';
+import { StatisticService } from './statistic.service';
 
-describe('StatisticsService', () => {
+describe('StatisticService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: StatisticsService = TestBed.get(StatisticsService);
+    const service: StatisticService = TestBed.get(StatisticService);
     expect(service).toBeTruthy();
   });
 });
