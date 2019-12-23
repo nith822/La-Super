@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 
 import { Product } from './product';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +13,13 @@ export class ProductService {
 	readonly primaryProductXML: string = "./assets/sample.xml";
 		
 	constructor(private http: HttpClient) { 
-		this.getProducts();
+		this.getProducts().subscribe(products => {
+			console.log(products);
+		});
 	}
   
 	getProducts(): Observable<Product[]> {
-		var products: Observable<Product[]>;
+		var products: Product[] = [];
 		this.loadXML(this.primaryProductXML).subscribe(data => {
 			var parser: DOMParser = new DOMParser();
 			
@@ -34,11 +36,10 @@ export class ProductService {
 				for (var j = 0; j < nodeList.length; j++) {
 					nodeChilds.push(nodeList.item(j).innerHTML);
 				}
-				//products.push(this.parseProduct(nodeChilds));
-				
+				products.push(this.parseProduct(nodeChilds));
 			}
 		});
-		return products;
+		return of(products);
 	}
 	
 	parseProduct(nodeChilds: string[]): Product {

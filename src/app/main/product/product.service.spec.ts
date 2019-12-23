@@ -16,13 +16,11 @@ describe('ProductService', () => {
     expect(service).toBeTruthy();
   });  
   
-  it('should create an array of valid products', () => {
+  it('should retrieve all valid products', (done) => {
 	const service: ProductService = TestBed.get(ProductService);
-	var products: Product [] = service.getProducts();
-	for(let product of products) {
-		console.log(product.toString());
-	}
-	expect(service.getProducts().length).toEqual(2);
-  });
-  
+	service.getProducts().subscribe(products => 
+		expect(products.length).toEqual(2);
+		done();
+	); 
+  }); 
 });
