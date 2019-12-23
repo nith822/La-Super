@@ -13,9 +13,6 @@ export class ProductService {
 	readonly primaryProductXML: string = "./assets/sample.xml";
 		
 	constructor(private http: HttpClient) { 
-		this.getProducts().subscribe(products => {
-			console.log(products);
-		});
 	}
   
 	getProducts(): Observable<Product[]> {

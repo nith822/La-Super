@@ -15,12 +15,15 @@ const routes: Routes = [
 	{ path: 'products', 
 		loadChildren: () => import('./main/components/pages/primary-product-page/primary-product-page.module').then(m => m.PrimaryProductPageModule) 
 	},				 
-	
+	{ path: 'contact', 
+		loadChildren: () => import('./main/components/pages/contact-page/contact-page.module').then(m => m.ContactPageModule) 
+	},
 	{
 		path: '',
 		redirectTo: '',
 		pathMatch: 'full'
 	},
+	
 	];
 
 @NgModule({

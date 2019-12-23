@@ -1,4 +1,6 @@
 <div class="border">
 	<p>primary-product-page works!</p>
-	<product></product>
+	<div *ngFor="let product of this.products">
+		<product [product]="product"></product>
+	</div>
 </div>
