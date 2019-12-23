@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ResponsiveService } from './main/responsive/responsive.service';
-import { FrontPageComponent } from './main/components/pages/front-page/front-page.component';
 
 @Component({
   selector: 'app-root',

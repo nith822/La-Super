@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'header',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+	urls: string[] = ['','products','contact'];
+	constructor(private router: Router) { }
+	
+	navigateTo(option: number): void {
+		this.router.navigateByUrl(this.urls[option]);
+	}
+  
+	ngOnInit() {
+	}
 
 }
