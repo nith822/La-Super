@@ -1,4 +1,4 @@
-.header {
+.body {
 	clear: both;
 	text-align: center;
 	border-style: solid;
@@ -13,6 +13,7 @@ button {
 p {
 	width: 21%;
 	float: left;
+	margin-top: -0.01%;
 }
 
 button:hover {
